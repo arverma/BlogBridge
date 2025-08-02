@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medium Publisher</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'><path d='M180.5 74.3C80.8 74.3 0 155.6 0 256S80.8 437.7 180.5 437.7 361 356.4 361 256 280.2 74.3 180.5 74.3zm288.25 10.6c-49.85 0-90.25 76.4-90.25 171.1s40.4 171.1 90.25 171.1 90.25-76.4 90.25-171.1-40.4-171.1-90.25-171.1zm139.8 17.5c-17.5 0-31.75 68.6-31.75 153.5s14.25 153.5 31.75 153.5S640 340.6 640 256s-14.25-153.6-31.45-153.6z' fill='%2300ab6c'/></svg>">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <header>
+                <div class="header-left">
+                    <button id="historyBtn" class="btn-secondary">
+                        <i class="fas fa-history"></i> History
+                    </button>
+                </div>
+                <h1><i class="fab fa-medium"></i> Medium Publisher</h1>
+                <div class="header-right">
+                    <button id="headerUploadBtn" class="btn-secondary" style="display: none;">
+                        <i class="fas fa-upload" style="margin-right: 8px;"></i> Upload File
+                    </button>
+                </div>
+            </header>
+
+            <main>
+                <div class="upload-section">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drop your markdown file here or click to browse</p>
+                        <input type="file" id="fileInput" accept=".md" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="editor-section" id="editorSection" style="display: none;">
+                    <div class="editor-header">
+                        <input type="text" id="titleInput" placeholder="Article Title" class="title-input">
+                        <div class="publish-controls">
+                            <input type="text" id="tagsInput" placeholder="Tags (comma separated)" class="tags-input">
+                            <select id="publishStatus" class="status-select">
+                                <option value="draft">Draft</option>
+                                <option value="public">Public</option>
+                                <option value="unlisted">Unlisted</option>
+                            </select>
+                            <button id="saveDraftBtn" class="btn-secondary">
+                                <i class="fas fa-save"></i> Save Draft
+                            </button>
+                            <button id="publishBtn" class="btn-primary">
+                                <i class="fas fa-paper-plane"></i> Publish to Medium
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="editor-container" id="editorContainer">
+                        <div class="editor-panel" id="editorPanel">
+                            <h3>Markdown Editor</h3>
+                            <textarea id="markdownEditor" placeholder="Write your article in markdown..."></textarea>
+                        </div>
+                        
+                        <div class="resize-handle" id="resizeHandle">
+                            <div class="resize-line"></div>
+                            <i class="fas fa-grip-lines"></i>
+                        </div>
+                        
+                        <div class="preview-panel" id="previewPanel">
+                            <h3>Preview</h3>
+                            <div id="preview" class="preview-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- History Modal Overlay -->
+        <div class="history-overlay" id="historyOverlay">
+            <div class="history-modal" id="historyModal">
+                <div class="history-modal-header">
+                    <h3><i class="fas fa-history"></i> History</h3>
+                    <button class="close-history-modal" id="closeHistoryModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="history-modal-content" id="historyContent">
+                    <p>Loading history...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
