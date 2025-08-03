@@ -327,8 +327,8 @@ main {
 
 /* Resize Handle */
 .resize-handle {
-    width: 4px;
-    height: 80%;
+    width: 6px;
+    height: 50%;
     background: transparent;
     cursor: col-resize;
     display: flex;
@@ -338,11 +338,11 @@ main {
     transition: background-color 0.2s ease;
     z-index: 10;
     align-self: center;
+    position: relative;
 }
 
 .resize-handle:hover {
     background: var(--border);
-    height: 80%;
 }
 
 .resize-line {
@@ -354,6 +354,12 @@ main {
 
 .resize-handle i {
     display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-light);
+    font-size: 12px;
 }
 
 .editor-container.resizing {
@@ -363,8 +369,8 @@ main {
 
 .editor-container.resizing .resize-handle {
     background: var(--primary);
-    width: 4px;
-    height: 80%;
+    width: 6px;
+    height: 50%;
 }
 
 .editor-container.resizing .resize-line {
@@ -633,11 +639,16 @@ main {
         height: 8px;
         cursor: row-resize;
         flex-direction: row;
+        position: relative;
     }
     
     .resize-line {
-        width: 100%;
+        width: 60px;
         height: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     
     .resize-handle i {
